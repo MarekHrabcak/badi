@@ -1,5 +1,3 @@
-# BADI
-
 Security aspects of digital identity
 
 Information protection is an integral part of the communication in a modern society. Sharing sensitive data on social networks, easy to use services, increasingly sophisticated threats and vulnerabilities, increasing number of digital identities in e-commerce and digital banking and unmanaged global digitization during pandemics require active approach to data protection and research new options to minimize the impact of security incidents. The thesis describes security aspects in communication between the consumer and service provider during authentication and proposes procedures that can describe these factors, categorize, measure and evaluate their impact on authentication.
