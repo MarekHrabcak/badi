@@ -1,4 +1,4 @@
-# badi
+# BADI
 
 Security aspects of digital identity
 
