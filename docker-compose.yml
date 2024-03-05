@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  web:
+    image: php:apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./apache/conf:/etc/apache2/sites-enabled
+      - ./apache/ssl-certs:/etc/apache2/ssl
+      - ./apache/logs:/var/log/apache2 
+    depends_on:
+      - db
+    networks:
+      - app_net
+    restart: always
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: badi
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./src/tmp0_15042022.sql:/docker-entrypoint-initdb.d/tmp0_15042022.sql
+    networks:
+      - app_net
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: "root"
+    networks:
+      - app_net
+
+volumes:
+  data:
+  src:
+  apache:
+
+networks:
+  app_net:
