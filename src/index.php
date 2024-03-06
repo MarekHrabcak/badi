@@ -5,7 +5,7 @@ session_start();
 
 
 include 'core.php';
-include 'src/ThreatFunctions.php';
+include 'src/WcsaFunctions.php';
 include 'src/ModelFunctions.php';
 include 'src/AspectFunctions.php';
 include 'src/FactorFunctions.php';
@@ -22,8 +22,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     $action = $_GET['action'];
 
     //    Delete actions
-    if ($action == 'deleteThreat') {
-        include_once "parts/threats/deleteThreat.php";
+    if ($action == 'deleteWcsa') {
+        include_once "parts/wcsa/deleteWcsa.php";
 
     } elseif ($action == 'deleteAspect') {
         include_once "parts/aspects/deleteAspect.php";
@@ -47,8 +47,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'addFactor') {
         include_once "parts/factors/addFactorProcess.php";
 
-    } elseif ($action == 'addThreat') {
-        include_once "parts/threats/addThreatProcess.php";
+    } elseif ($action == 'addWcsa') {
+        include_once "parts/wcsa/addWcsaProcess.php";
 
     } elseif ($action == 'addUser') {
         include_once "parts/user/addUserProcess.php";
@@ -63,8 +63,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'editFactor') {
         include_once "parts/factors/editFactorProcess.php";
 
-    } elseif ($action == 'editThreat') {
-        include_once "parts/threats/editThreatProcess.php";
+    } elseif ($action == 'editWcsa') {
+        include_once "parts/wcsa/editWcsaProcess.php";
 
     } elseif ($action == 'editRole') {
         include_once "parts/user/editRoleProcess.php";
@@ -105,7 +105,7 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
 
 //
 //Validacia role Analyst
-    if (in_array($page, ['threats', 'editThreat', 'addThreat', 'aspects', 'addAspect', 'editAspect', 'addFactor', 'editFactor']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_RISK_ANALYST)) {
+    if (in_array($page, ['wcsas', 'editWcsa', 'addWcsa', 'aspects', 'addAspect', 'editAspect', 'addFactor', 'editFactor']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_RISK_ANALYST)) {
         AlertFunctions::addAlert(AlertFunctions::ERROR, 'Nemate opravnenie');
         CoreFunctions::redirect(CoreFunctions::PAGE_HOMEPAGE);
     }
@@ -158,13 +158,13 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
 
                  if (isset($_GET['page']) && $_GET['page'] != '') {
                      $page = $_GET['page'];
-                        //  threats
-                     if ($page == 'threats' ) {
-                         include_once "parts/threats/threats.php";
-                     } elseif ($page == 'addThreat' ) {
-                         include_once "parts/threats/addThreat.php";
-                     } elseif ($page == 'editThreat' ) {
-                         include_once "parts/threats/editThreat.php";
+                        //  wcsas
+                     if ($page == 'wcsas' ) {
+                         include_once "parts/wcsa/wcsa.php";
+                     } elseif ($page == 'addWcsa' ) {
+                         include_once "parts/wcsa/addWcsa.php";
+                     } elseif ($page == 'editWcsa' ) {
+                         include_once "parts/wcsa/editWcsa.php";
                         //  aspects
                      } elseif ($page == 'aspects' ) {
                          include_once "parts/aspects/aspects.php";

@@ -19,10 +19,10 @@ class CoreFunctions
     public const ACTION_ADD_MODEL = 'index.php?action=addModel';
     public const ACTION_EDIT_MODEL = 'index.php?action=editModel';
     public const ACTION_DELETE_MODEL = 'index.php?action=deleteModel&id=';
-    // THREATS
-    public const ACTION_ADD_THREAT = 'index.php?action=addThreat';
-    public const ACTION_EDIT_THREAT = 'index.php?action=editThreat';
-    public const ACTION_DELETE_THREAT = 'index.php?action=deleteThreat&id=';
+    // wcsaS
+    public const ACTION_ADD_WCSA = 'index.php?action=addWcsa';
+    public const ACTION_EDIT_WCSA = 'index.php?action=editWcsa';
+    public const ACTION_DELETE_WCSA = 'index.php?action=deleteWcsa&id=';
     // USERS
     public const ACTION_ADD_USER = 'index.php?action=addUser';
     public const ACTION_EDIT_USER = 'index.php?action=editUser';
@@ -56,10 +56,10 @@ class CoreFunctions
     public const PAGE_ADD_MODEL = 'index.php?page=addModel';
     public const PAGE_EDIT_MODEL = 'index.php?page=editModel&editId=';
 
-    // Threats
-    public const PAGE_THREATS = 'index.php?page=threats';
-    public const PAGE_ADD_THREAT = 'index.php?page=addThreat';
-    public const PAGE_EDIT_THREAT = 'index.php?page=editThreat&editId=';
+    // WCSAs
+    public const PAGE_WCSAS = 'index.php?page=Wcsas';
+    public const PAGE_ADD_WCSA = 'index.php?page=addWcsa';
+    public const PAGE_EDIT_WCSA = 'index.php?page=editWcsa&editId=';
     
     
 //  Konstanty pre ROLEs
