@@ -74,8 +74,8 @@ $modelCount = $modelFunctions->displayModelCount();
         <br>The thesis points to the security aspects of digital identity in terms of communication between the consumer and service provider, draws attention to the factors entering the identity verification process. Part of the thesis is a functional and technical description of the application that proposes a model for the optimum form of authentication based on the user's inputs. The application is preparing models from data that were obtained from the materials listed in bibliographic links and evaluated according to the OWASP Risk Assessment Framework methodology.
         <br>The output of work is a functional application that proposes a model for optimum authentication based on the user inputs.
     </p>
-    <ul class="list-unstyled">Application requires input data (security aspects):
-    <ul>
+    <p>
+    <ul class="list-unstyled">Application requires input data (security aspects):<ul>
     <li>Type of data processed (public data, personal data, confidential data, strictly confidential data, non-classified data);</li>
     <li>Application architecture type (1-layer, 2-layer, etc.);</li>
     <li>Authentication protocol type (mTSL, LDAP, Kerberos, NTLM, Radius, OAuth / SAML / OIDC, ...);</li>
@@ -84,9 +84,7 @@ $modelCount = $modelFunctions->displayModelCount();
     <li>Digital Signing (RSA, HMAC, OTP, HASH),</li>
     <li>Encryption (RSA, ECC, AES, DEC, 3DES),</li>
     <li>User Privilege (Anonymous User, Standard User, Administrator , ...).</li>
-    </ul>
-    </ul>
-
+</p>
 
 
 

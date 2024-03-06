@@ -7,10 +7,10 @@ $dreadFunctions = new DreadFunctions($connection->getConnection());
 ?>
 <!--Hlavicka-->
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">DREAD factors</h1>
+    <h1 class="h2">OWASP factors</h1>
 </div>
 
-<h3>Add new DREAD factor</h3>
+<h3>Add new OWASP factor</h3>
 
 <!--Formular-->
     <form action="<?php echo CoreFunctions::ACTION_ADD_DREAD; ?>" method="POST">

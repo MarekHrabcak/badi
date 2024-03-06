@@ -11,6 +11,11 @@ $aspectFunctions = new AspectFunctions($connection->getConnection());
     <h1 class="h2">Aspects</h1>
 </div>
 
+
+
+
+
+
 <h3>Add new aspect</h3>
 
 <!--Formular-->
@@ -52,19 +57,6 @@ $aspectFunctions = new AspectFunctions($connection->getConnection());
             <input type="submit" name="cancel" class="btn btn-danger" style="float:right; margin-top: 20px; margin-left: 20px" value="Cancel" onclick="history.go(-1)">
             <input type="submit" name="submit" class="btn btn-primary" style="float:right; margin-top: 20px" value="Submit">
         </form>
-
-
-<!--TEST GRIDU-->
-<form>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="First name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Last name">
-        </div>
-    </div>
-</form>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
