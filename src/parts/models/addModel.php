@@ -67,7 +67,10 @@ if (isset($_POST['userpriv'])) {
     <h1 class="h2">Models</h1>
 </div>
 
-<h3>Select aspects and submit button</h3>
+<h3>Select aspects and submit <b>Calculate</b> button</h3>
+<p>
+On this page you can select aspects and by pressing the Calculate button the application will recalculate the risks for all predefined Aspects with respect to the selected Aspects.
+</p>
 
         <!--   INPUT DATA-->
 <!--        <hr class=""> <h3>Vyberte aspekty modelu</h3><hr>-->
@@ -280,7 +283,7 @@ if (isset($_POST['userpriv'])) {
                     </select>
                 </div>
                 <input type="submit" name="cancel" class="btn btn-danger" style="float:right; margin-top: 20px; margin-left: 20px" value="Cancel" onclick="history.go(-1)">
-                <input type="submit" name="submit" class="btn btn-primary" style="float:right; margin-top: 20px" value="submit">
+                <input type="submit" name="submit" class="btn btn-primary" style="float:right; margin-top: 20px" value="Calculate">
             </form>
 <!--</div>-->
         <br><br><br><br>
@@ -295,13 +298,19 @@ if (isset($_POST['userpriv'])) {
 <!-- counting -->
 
         <div>
-            <h2>Faktorization</h2>
+            <h2>Output</h2>
+            <p>
+            The output of the calculation is a list of authentication mechanisms marked with the degree of calculated risk according to the aspects you choose. 
+            By changing the selected aspects and pressing the Calculate button again, the risks will be recalculated.
+            <br>
+        </p>
+        <br>
 
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
-                    <th>model_name</th>
-                    <th>Authprot</th>
+                    <!-- <th>model_name</th> -->
+                    <th>Authentication</th>
                     <th>SL</th>
                     <th>M</th>
                     <th>O</th>
@@ -318,11 +327,11 @@ if (isset($_POST['userpriv'])) {
                     <th>RD</th>
                     <th>NC</th>
                     <th>PV</th>
-                    <th>Risklevel</th>
-                    <th>Likvalue</th>
-                    <th>Liklevel</th>
-                    <th>Impvalue</th>
-                    <th>Implevel</th>
+                    <th>Risk Level</th>
+                    <th>Lik. Value</th>
+                    <th>Lik. Level</th>
+                    <th>Imp. Value</th>
+                    <th>Imp. Level</th>
 
                     <th>Action</th>
                 </tr>
@@ -335,7 +344,7 @@ if (isset($_POST['userpriv'])) {
                         $modelColour = $modelFunctions->getRiskColour($item['risklevel']);
                         ?>
                         <tr>
-                            <td><?php echo $item['model_name'] ?></td>
+                            <!-- <td><?php echo $item['model_name'] ?></td> -->
                             <td><?php echo $item['type'] ?></td>
                             <td><?php echo $item['sl'] ?></td>
                             <td><?php echo $item['m'] ?></td>
@@ -410,11 +419,5 @@ if (isset($_POST['userpriv'])) {
         <?php } ?>
 
 
-<!--Calc scripts-->
 
-<script src="/badi/assets/dist/js/jquery.min.js"></script>
-<script src="/badi/assets/dist/js/Chart.min.js"></script>
-<script src="/badi/assets/dist/js/bootstrap.min.js"></script>
-<script src="/badi/assets/dist/js/sweetalert.min.js"></script>
-<script src="/badi/assets/dist/js/script.js"></script>
 

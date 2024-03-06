@@ -10,7 +10,15 @@ $wcsaFunctions = new WcsaFunctions($connection->getConnection());
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Worse Case Scenario</h1>
-<!--    <a href="index.php?page=addwcsa" class="btn btn-primary" style="float:right;">New</a>-->
+</div>
+
+<div>
+    <p>
+A worst-case scenario is a concept in risk management wherein the planner, in planning for potential disasters, considers the most severe possible outcome that can reasonably be projected to occur in a given situation.
+
+In the following table, you can add your own scenario with which the application will work when assessing risk.
+</p>
+<br><br>
 </div>
 
 <div>

@@ -519,11 +519,11 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
 
 
 
-<script src="/badi/assets/dist/js/jquery.min.js"></script>
-<script src="/badi/assets/dist/js/Chart.min.js"></script>
-<script src="/badi/assets/dist/js/bootstrap.min.js"></script>
-<script src="/badi/assets/dist/js/sweetalert.min.js"></script>
-<script src="/badi/assets/dist/js/script.js"></script>
+<script src="/assets/dist/js/jquery.min.js"></script>
+<script src="assets/dist/js/Chart.min.js"></script>
+<script src="/assets/dist/js/bootstrap.min.js"></script>
+<script src="/assets/dist/js/sweetalert.min.js"></script>
+<script src="/assets/dist/js/script.js"></script>
 
 <!--1st Calculation -->
 <script>$(document).ready(function () {
