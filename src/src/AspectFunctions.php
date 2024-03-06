@@ -10,21 +10,7 @@ class AspectFunctions
 
     }
 
-    // OCALC DATA
-    public function displayDataDread()
-    {
-        $query = "SELECT * FROM dread";
-        $result = $this->connection->query($query);
-        if ($result->num_rows > 0) {
-            $data = array();
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
-            return $data;
-        } else {
-            echo "No found records";
-        }
-    }
+
 
     //    aspects CRUD
     public function displayDataAspects($aspect_type)

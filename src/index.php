@@ -8,7 +8,7 @@ include 'core.php';
 include 'src/ThreatFunctions.php';
 include 'src/ModelFunctions.php';
 include 'src/AspectFunctions.php';
-include 'src/DreadFunctions.php';
+include 'src/FactorFunctions.php';
 include 'src/CalculationFunctions.php';
 include 'src/UserFunctions.php';
 include 'src/AlertFunctions.php';
@@ -31,8 +31,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'deleteModel') {
         include_once "parts/models/deleteModel.php";
 
-    } elseif ($action == 'deleteDread') {
-        include_once "parts/aspects/deleteDread.php";
+    } elseif ($action == 'deleteFactor') {
+        include_once "parts/factors/deleteFactor.php";
 
     } elseif ($action == 'deleteUser') {
         include_once "parts/user/deleteUser.php";
@@ -44,8 +44,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'addModel') {
         include_once "parts/models/addModelProcess.php";
 
-    } elseif ($action == 'addDread') {
-        include_once "parts/aspects/addDreadProcess.php";
+    } elseif ($action == 'addFactor') {
+        include_once "parts/factors/addFactorProcess.php";
 
     } elseif ($action == 'addThreat') {
         include_once "parts/threats/addThreatProcess.php";
@@ -60,8 +60,8 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'editModel') {
         include_once "parts/models/editModelProcess.php";
 
-    } elseif ($action == 'editDread') {
-        include_once "parts/aspects/editDreadProcess.php";
+    } elseif ($action == 'editFactor') {
+        include_once "parts/factors/editFactorProcess.php";
 
     } elseif ($action == 'editThreat') {
         include_once "parts/threats/editThreatProcess.php";
@@ -105,7 +105,7 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
 
 //
 //Validacia role Analyst
-    if (in_array($page, ['threats', 'editThreat', 'addThreat', 'aspects', 'addAspect', 'editAspect', 'addDread', 'editDread']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_RISK_ANALYST)) {
+    if (in_array($page, ['threats', 'editThreat', 'addThreat', 'aspects', 'addAspect', 'editAspect', 'addFactor', 'editFactor']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_RISK_ANALYST)) {
         AlertFunctions::addAlert(AlertFunctions::ERROR, 'Nemate opravnenie');
         CoreFunctions::redirect(CoreFunctions::PAGE_HOMEPAGE);
     }
@@ -158,30 +158,35 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
 
                  if (isset($_GET['page']) && $_GET['page'] != '') {
                      $page = $_GET['page'];
+                        //  threats
                      if ($page == 'threats' ) {
                          include_once "parts/threats/threats.php";
                      } elseif ($page == 'addThreat' ) {
                          include_once "parts/threats/addThreat.php";
                      } elseif ($page == 'editThreat' ) {
                          include_once "parts/threats/editThreat.php";
+                        //  aspects
                      } elseif ($page == 'aspects' ) {
                          include_once "parts/aspects/aspects.php";
                      } elseif ($page == 'addAspect' ) {
                          include_once "parts/aspects/addAspect.php";
                      } elseif ($page == 'editAspect' ) {
                          include_once "parts/aspects/editAspect.php";
+                        //  models
                      } elseif ($page == 'models' ) {
                          include_once "parts/models/models.php";
                      } elseif ($page == 'addModel' ) {
                          include_once "parts/models/addModel.php";
-//                     } elseif ($page == 'countModel' ) {
-//                         include_once "parts/models/addModel.php";
                      } elseif ($page == 'editModel' ) {
                          include_once "parts/models/editModel.php";
-                     } elseif ($page == 'editDread' ) {
-                         include_once "parts/aspects/editDread.php";
-                     } elseif ($page == 'addDread' ) {
-                         include_once "parts/aspects/addDread.php";
+                        //  factors
+                     } elseif ($page == 'factors' ) {
+                        include_once "parts/factors/factors.php";
+                     } elseif ($page == 'editFactor' ) {
+                         include_once "parts/factors/editFactor.php";
+                     } elseif ($page == 'addFactor' ) {
+                         include_once "parts/factors/addFactor.php";
+                        //  others
                      }  elseif ($page == 'login' ) {
                          include_once "parts/user/login.php";
                      }  elseif ($page == 'homepage' ) {
