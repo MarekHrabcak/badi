@@ -9,13 +9,13 @@ if (!CoreFunctions::isGranted(CoreFunctions::ROLE_OPERATOR)) {
     CoreFunctions::redirect(CoreFunctions::PAGE_HOMEPAGE);
 }
 
-$threatFunctions = new ThreatFunctions($connection->getConnection());
+$wcsaFunctions = new WcsaFunctions($connection->getConnection());
 $modelFunctions = new ModelFunctions($connection->getConnection());
 $aspectFunctions = new AspectFunctions($connection->getConnection());
-$dreadFunctions = new DreadFunctions($connection->getConnection());
+$factorFunctions = new FactorFunctions($connection->getConnection());
 
 //var_dump($_GET);
-// Edit threat record
+// Edit wcsa record
 if(isset($_GET['editId']) && !empty($_GET['editId'])) {
     $editId = $_GET['editId'];
     $models = $modelFunctions->displayRecordByIdModels($editId);
@@ -48,13 +48,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="udataclass">
                 <option value="<?php echo $models['dataclass']; ?>"><?php echo $models['dataclass']; ?></option>
                 <?php
-                $threat_aspect = "dataclass";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "dataclass";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -67,13 +67,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="uarchitect">
                 <option value="<?php echo $models['architect']; ?>"><?php echo $models['architect']; ?></option>
                 <?php
-                $threat_aspect = "architect";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "architect";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -86,13 +86,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="uauthprot">
                 <option value="<?php echo $models['authprot']; ?>"><?php echo $models['authprot']; ?></option>
                 <?php
-                $threat_aspect = "authprot";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "authprot";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -105,13 +105,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="unetloc">
                 <option value="<?php echo $models['netloc']; ?>"><?php echo $models['netloc']; ?></option>
                 <?php
-                $threat_aspect = "dataclass";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "dataclass";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -124,13 +124,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="uauthfact">
                 <option value="<?php echo $models['authfact']; ?>"><?php echo $models['authfact']; ?></option>
                 <?php
-                $threat_aspect = "authfact";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "authfact";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -143,13 +143,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="usign">
                 <option value="<?php echo $models['sign']; ?>"><?php echo $models['sign']; ?></option>
                 <?php
-                $threat_aspect = "sign";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "sign";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -162,13 +162,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="uenc">
                 <option value="<?php echo $models['enc']; ?>"><?php echo $models['enc']; ?></option>
                 <?php
-                $threat_aspect = "enc";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "enc";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -180,13 +180,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  name="uuserpriv">
                 <option value="<?php echo $models['userpriv']; ?>"><?php echo $models['userpriv']; ?></option>
                 <?php
-                $threat_aspect = "dataclass";
-                $threatItems = $threatFunctions->displayDataThreats($threat_aspect);
-                foreach($threatItems as $item)
+                $wcsa_aspect = "dataclass";
+                $wcsaItems = $wcsaFunctions->displayDataWcsas($wcsa_aspect);
+                foreach($wcsaItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item[$threat_aspect]?>">
-                        <?php echo $item[$threat_aspect]?>
+                    <option value="<?php echo $item[$wcsa_aspect]?>">
+                        <?php echo $item[$wcsa_aspect]?>
                     </option>
                     <?php
                 }
@@ -194,7 +194,7 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             </select>
         </div>
 
-        <H2>Change DREAD factors</H2>
+        <H2>Change factors</H2>
 
         <H3>Likelihood score</H3>
         <!--        Faktory-->
@@ -203,13 +203,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="sl" name="usl" onchange="calculate()">
                 <option value="<?php echo $models['sl']; ?>"><?php echo $models['sl']; ?></option>
                 <?php
-                $dread_name = 'sl';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'sl';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -222,13 +222,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="m" name="um" onchange="calculate()">
                 <option value="<?php echo $models['m']; ?>"><?php echo $models['m']; ?></option>
                 <?php
-                $dread_name = 'm';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'm';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -241,13 +241,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="o" name="uo" onchange="calculate()">
                 <option value="<?php echo $models['o']; ?>"><?php echo $models['o']; ?></option>
                 <?php
-                $dread_name = 'o';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'o';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -260,13 +260,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="s" name="us" onchange="calculate()">
                 <option value="<?php echo $models['s']; ?>"><?php echo $models['s']; ?></option>
                 <?php
-                $dread_name = 's';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 's';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -281,13 +281,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="ed" name="ued" onchange="calculate()">
                 <option value="<?php echo $models['ed']; ?>"><?php echo $models['ed']; ?></option>
                 <?php
-                $dread_name = 'ed';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'ed';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -299,13 +299,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="ee" name="uee" onchange="calculate()">
                 <option value="<?php echo $models['ee']; ?>"><?php echo $models['ee']; ?></option>
                 <?php
-                $dread_name = 'ee';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'ee';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -317,13 +317,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control" id="a" name="ua" onchange="calculate()">
                 <option value="<?php echo $models['a']; ?>"><?php echo $models['a']; ?></option>
                 <?php
-                $dread_name = 'a';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'a';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -336,13 +336,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="ide" name="uide" onchange="calculate()">
                 <option value="<?php echo $models['ide']; ?>"><?php echo $models['ide']; ?></option>
                 <?php
-                $dread_name = 'ide';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'ide';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -360,13 +360,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="lc" name="ulc" onchange="calculate()">
                 <option value="<?php echo $models['lc']; ?>"><?php echo $models['lc']; ?></option>
                 <?php
-                $dread_name = 'lc';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'lc';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -378,13 +378,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control" id="li" name="uli" onchange="calculate()">
                 <option value="<?php echo $models['li']; ?>"><?php echo $models['li']; ?></option>
                 <?php
-                $dread_name = 'li';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'li';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -396,13 +396,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="lav" name="ulav" onchange="calculate()">
                 <option value="<?php echo $models['lav']; ?>"><?php echo $models['lav']; ?></option>
                 <?php
-                $dread_name = 'lav';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'lav';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -415,13 +415,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="lac" name="ulac" onchange="calculate()">
                 <option value="<?php echo $models['lac']; ?>"><?php echo $models['lac']; ?></option>
                 <?php
-                $dread_name = 'lac';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'lac';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -436,13 +436,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="fd" name="ufd" onchange="calculate()">
                 <option value="<?php echo $models['fd']; ?>"><?php echo $models['fd']; ?></option>
                 <?php
-                $dread_name = 'fd';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'fd';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -454,13 +454,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="rd" name="urd" onchange="calculate()">
                 <option value="<?php echo $models['rd']; ?>"><?php echo $models['rd']; ?></option>
                 <?php
-                $dread_name = 'rd';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'rd';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -473,13 +473,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="nc" name="unc" onchange="calculate()">
                 <option value="<?php echo $models['nc']; ?>"><?php echo $models['nc']; ?></option>
                 <?php
-                $dread_name = 'nc';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'nc';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }
@@ -492,13 +492,13 @@ if(isset($_GET['editId']) && !empty($_GET['editId'])) {
             <select class="form-control"  id="pv" name="upv" onchange="calculate()">
                 <option value="<?php echo $models['pv']; ?>"><?php echo $models['pv']; ?></option>
                 <?php
-                $dread_name = 'pv';
-                $dreadItems = $dreadFunctions->getDreadItems($dread_name);
-                foreach($dreadItems as $item)
+                $factor_name = 'pv';
+                $factorItems = $factorFunctions->getFactorItems($factor_name);
+                foreach($factorItems as $item)
                 {
                     ?>
-                    <option value="<?php echo $item['dread_level']?>">
-                        <?php echo $item['dread_description']?>
+                    <option value="<?php echo $item['factor_level']?>">
+                        <?php echo $item['factor_description']?>
                     </option>
                     <?php
                 }

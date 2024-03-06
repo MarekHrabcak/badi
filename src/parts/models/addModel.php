@@ -6,11 +6,11 @@ if (!CoreFunctions::isGranted()) {
 
 $modelFunctions = new ModelFunctions($connection->getConnection());
 
-$threatFunctions = new ThreatFunctions($connection->getConnection());
+$wcsaFunctions = new WcsaFunctions($connection->getConnection());
 
 $aspectFunctions = new AspectFunctions($connection->getConnection());
 
-$dreadFunctions = new DreadFunctions($connection->getConnection());
+$factorFunctions = new FactorFunctions($connection->getConnection());
 
 
 $model_name = '';
@@ -90,8 +90,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "dataclass";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($dataclass == $item[$aspect_type]) {
                                 ?>
@@ -119,8 +119,8 @@ if (isset($_POST['userpriv'])) {
                         <?php
                         $aspect_type = "architect";
 //                        $aspect_type = '$architect';
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($architect == $item[$aspect_type]) {
                                 ?>
@@ -147,8 +147,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "netloc";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($netloc == $item[$aspect_type]) {
                                 ?>
@@ -175,8 +175,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "authfact";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($authfact == $item[$aspect_type]) {
                                 ?>
@@ -203,8 +203,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "sign";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($sign == $item[$aspect_type]) {
                                 ?>
@@ -231,8 +231,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "enc";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($enc == $item[$aspect_type]) {
                                 ?>
@@ -259,8 +259,8 @@ if (isset($_POST['userpriv'])) {
                         <option value=""></option>
                         <?php
                         $aspect_type = "userpriv";
-                        $threatItems = $threatFunctions->displayDataThreats($aspect_type);
-                        foreach($threatItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        foreach($wcsaItems as $item)
                         {
                             if ($userpriv == $item[$aspect_type]) {
                                 ?>
@@ -289,13 +289,13 @@ if (isset($_POST['userpriv'])) {
         <?php
         if(!empty($_POST) && isset($_POST['submit'])) {
 
-            $results = $modelFunctions->countDREADall();
+            $results = $modelFunctions->countFactorsAll();
 
         ?>
-<!--DREAD counting -->
+<!-- counting -->
 
         <div>
-            <h2>DREAD faktorizácia</h2>
+            <h2>Faktorization</h2>
 
             <table class="table table-striped table-sm">
                 <thead>

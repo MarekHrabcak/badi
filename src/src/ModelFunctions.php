@@ -126,7 +126,7 @@ class ModelFunctions {
 
         $query = "INSERT INTO models(model_name,model_description,dataclass,architect,authprot,netloc,authfact,sign,enc,userpriv,risklevel,liklevel,likvalue,implevel,impvalue,sl,m,o,s,ed,ee,a,ide,lc,li,lav,lac,fd,rd,nc,pv) VALUES('$model_name','$model_description','$dataclass','$architect','$authprot','$netloc','$authfact','$sign','$enc','$userpriv','$risklevel','$liklevel','$likvalue','$implevel','$impvalue','$sl','$m','$o','$s','$ed','$ee','$a','$ide','$lc','$li','$lav','$lac','$fd','$rd','$nc','$pv')";
         $sql = $this->connection->query($query);
-        var_dump($sql);
+        // var_dump($sql);
         if ($sql == true) {
             header("Location: index.php?page=models&msg1=insert");
         } else {
@@ -150,7 +150,7 @@ class ModelFunctions {
     }
 
 
-    public function countDREADall()
+    public function countFactorsAll()
     {
         $model_name = '';
         if (isset($_POST['model_name'])) {
@@ -243,23 +243,23 @@ class ModelFunctions {
 //                 WHERE
 //                ((dataclass='Prísne chránené' OR enc='AES' OR authfact='2FA') AND authprot='http basic authentication')
 //                OR
-//                (authprot='http basic authentication' AND threat_name='TMP0')
+//                (authprot='http basic authentication' AND factor_name='TMP0')
 //
 //                Stara skoro funkcna querinka
-//                $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND threat_name='TMP0')";
+//                $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND factor_name='TMP0')";
 
 //                Dalsi skoro dobry pokus, vnasa ale do podmienky authprot=authprot...
-//                $sqlselect = '((' . implode(" OR ", $conditions) . ") AND authprot='$type') OR (authprot='$type' AND threat_name='TMP0')";
+//                $sqlselect = '((' . implode(" OR ", $conditions) . ") AND authprot='$type') OR (authprot='$type' AND factor_name='TMP0')";
 
 //Tato podmienka funguje pre vazby authprot+aspekt
-//                $sqlselect = '((' . implode(" OR ", $conditions) . ") AND authprot='$type') OR (authprot='$type' AND threat_name='TMP0')";
+//                $sqlselect = '((' . implode(" OR ", $conditions) . ") AND authprot='$type') OR (authprot='$type' AND factor_name='TMP0')";
 
 //       31.3.2022 Tato podmienka len spocita minimum, nema ziadnu vazbu na aspekt
-                $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND threat_name='TMP0')";
+                $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND wcsa_name='TMP0')";
 
 
             } else {
-                $sqlselect = "authprot='$type' AND threat_name='TMP0'";
+                $sqlselect = "authprot='$type' AND wcsa_name='TMP0'";
             }
 
 //                        var_dump($sqlselect);
@@ -270,7 +270,7 @@ class ModelFunctions {
                     MIN(ed) AS ed, MIN(ee) AS ee, MIN(a) AS a, MIN(ide) AS ide,
                     MIN(lc) AS lc, MIN(li) AS li, MIN(lav) AS lav, MIN(lac) AS lac,
                     MIN(fd) AS fd, MIN(rd) AS rd, MIN(nc) AS nc, MIN(pv) AS pv, MIN(a) AS a
-                    FROM `threats` WHERE $sqlselect ";
+                    FROM `wcsa` WHERE $sqlselect ";
 
 //var_dump($query);
 
@@ -324,7 +324,7 @@ class ModelFunctions {
 
     public function getAuthprotTypes()
     {
-        $query = "SELECT authprot FROM threats WHERE authprot IS NOT NULL GROUP BY authprot";
+        $query = "SELECT authprot FROM wcsa WHERE authprot IS NOT NULL GROUP BY authprot";
         $result = $this->connection->query($query);
 
         if ($result->num_rows > 0) {
@@ -367,10 +367,10 @@ class ModelFunctions {
         }
     }
 
-    //    DREAD factors
-    public function getDreadItems($dread_name)
+    //    factor factors
+    public function getFactorItems($factor_name)
     {
-        $query = "SELECT * FROM dread WHERE dread_name = '$dread_name'";
+        $query = "SELECT * FROM factors WHERE factor_name = '$factor_name'";
         $result = $this->connection->query($query);
         if ($result->num_rows > 0) {
             $data = array();

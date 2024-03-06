@@ -23,7 +23,7 @@ $modelFunctions = new ModelFunctions($connection->getConnection());
             <table class="table table-striped table-sm ">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Timestamp</th>
                     <th>Name</th>
                     <th>Desc.</th>
                     <th>Auth</th>
@@ -39,7 +39,6 @@ $modelFunctions = new ModelFunctions($connection->getConnection());
                     <th>Lik. value</th>
                     <th>Imp.</th>
                     <th>Imp. value</th>
-                    <th>Timestamp</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -50,7 +49,7 @@ $modelFunctions = new ModelFunctions($connection->getConnection());
                     $modelColour = $modelFunctions->getRiskColour($item['risklevel']);
                     ?>
                     <tr>
-                        <td><?php echo $item['id'] ?></td>
+                        <td><?php echo $item['timestamp'] ?></td>
                         <td><?php echo $item['model_name'] ?></td>
                         <td><?php echo $item['model_description'] ?></td>
                         <td><?php echo $item['authprot'] ?></td>
@@ -66,7 +65,6 @@ $modelFunctions = new ModelFunctions($connection->getConnection());
                         <td><?php echo $item['likvalue'] ?></td>
                         <td><?php echo $item['implevel'] ?></td>
                         <td><?php echo $item['impvalue'] ?></td>
-                        <td><?php echo $item['timestamp'] ?></td>
                         <td>
                             <a href="<?php echo CoreFunctions::PAGE_EDIT_MODEL . $item['id'] ?>" style="color:green" target="_blank">
                                 <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
