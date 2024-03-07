@@ -55,6 +55,22 @@
             min-height: 100vh;
         }
 
+    /* td {
+        text-align: center;
+        }
+    tr {
+        text-align: center;
+        }
+
+        /* Exclude first column from center alignment */
+        td:first-child {
+            text-align: left;
+        } */
+
+        
+    
+
+
 
 
     </style>

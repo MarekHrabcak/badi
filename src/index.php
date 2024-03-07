@@ -188,12 +188,10 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
                         //  relations
                      } elseif ($page == 'relations' ) {
                         include_once "parts/relations/relations.php";
-                    } elseif ($page == 'addrelation' ) {
-                        include_once "parts/relations/addrelation.php";
+                    } elseif ($page == 'addRelation' ) {
+                        include_once "parts/relations/addRelation.php";
                     } elseif ($page == 'editRelation' ) {
                         include_once "parts/relations/editRelation.php";
-                    } elseif ($page == 'editRelationb' ) {
-                        include_once "parts/relations/editRelationb.php";
                         //  models
                      } elseif ($page == 'models' ) {
                          include_once "parts/models/models.php";

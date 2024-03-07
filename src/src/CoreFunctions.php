@@ -61,8 +61,6 @@ class CoreFunctions
      public const PAGE_RELATIONS = 'index.php?page=relations';
      public const PAGE_ADD_RELATION = 'index.php?page=addRelation';
      public const PAGE_EDIT_RELATION = 'index.php?page=editRelation&editId=';
-     public const PAGE_ADD_RELATIONB = 'index.php?page=addRelationb';
-     public const PAGE_EDIT_RELATIONB = 'index.php?page=editRelationb&editId=';
 
     // Models
     public const PAGE_MODELS = 'index.php?page=models';
