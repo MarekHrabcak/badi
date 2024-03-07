@@ -6,6 +6,7 @@ session_start();
 
 include 'core.php';
 include 'src/WcsaFunctions.php';
+include 'src/RelationFunctions.php';
 include 'src/ModelFunctions.php';
 include 'src/AspectFunctions.php';
 include 'src/FactorFunctions.php';
@@ -28,6 +29,9 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'deleteAspect') {
         include_once "parts/aspects/deleteAspect.php";
 
+    } elseif ($action == 'deleteRelation') {
+        include_once "parts/relations/deleteRelation.php";
+
     } elseif ($action == 'deleteModel') {
         include_once "parts/models/deleteModel.php";
 
@@ -44,6 +48,9 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
     } elseif ($action == 'addModel') {
         include_once "parts/models/addModelProcess.php";
 
+    } elseif ($action == 'addRelation') {
+        include_once "parts/relations/addRelationProcess.php";
+
     } elseif ($action == 'addFactor') {
         include_once "parts/factors/addFactorProcess.php";
 
@@ -56,6 +63,9 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
         //    EDIT actions
     } elseif ($action == 'editAspect') {
         include_once "parts/aspects/editAspectProcess.php";
+
+    } elseif ($action == 'editRelation') {
+        include_once "parts/relations/editRelationProcess.php";
 
     } elseif ($action == 'editModel') {
         include_once "parts/models/editModelProcess.php";
@@ -97,7 +107,7 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
     }
 
 //    ////Validacia role operator
-    if (in_array($page, ['models','addModel','editModel']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_OPERATOR)) {
+    if (in_array($page, ['relations', 'models','addModel','editModel']) && !CoreFunctions::isGranted(CoreFunctions::ROLE_OPERATOR)) {
 //        die('validacia role operator');
         AlertFunctions::addAlert(AlertFunctions::ERROR, 'Nemate opravnenie');
         CoreFunctions::redirect(CoreFunctions::PAGE_HOMEPAGE);
@@ -172,6 +182,13 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
                          include_once "parts/aspects/addAspect.php";
                      } elseif ($page == 'editAspect' ) {
                          include_once "parts/aspects/editAspect.php";
+                        //  relations
+                     } elseif ($page == 'relations' ) {
+                        include_once "parts/relations/relations.php";
+                    } elseif ($page == 'addrelation' ) {
+                        include_once "parts/relations/addrelation.php";
+                    } elseif ($page == 'editRelation' ) {
+                        include_once "parts/relations/editRelation.php";
                         //  models
                      } elseif ($page == 'models' ) {
                          include_once "parts/models/models.php";

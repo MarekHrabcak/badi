@@ -15,10 +15,14 @@ class CoreFunctions
     public const ACTION_ADD_FACTOR = 'index.php?action=addFactor';
     public const ACTION_EDIT_FACTOR = 'index.php?action=editFactor';
     public const ACTION_DELETE_FACTOR = 'index.php?action=deleteFactor&id=';
-    // MODELS
-    public const ACTION_ADD_MODEL = 'index.php?action=addModel';
-    public const ACTION_EDIT_MODEL = 'index.php?action=editModel';
-    public const ACTION_DELETE_MODEL = 'index.php?action=deleteModel&id=';
+    // RELATIONS
+    public const ACTION_ADD_RELATION = 'index.php?action=addRelation';
+    public const ACTION_EDIT_RELATION = 'index.php?action=editRelation';
+    public const ACTION_DELETE_RELATION = 'index.php?action=deleteRelation&id=';
+     // MODELS
+     public const ACTION_ADD_MODEL = 'index.php?action=addModel';
+     public const ACTION_EDIT_MODEL = 'index.php?action=editModel';
+     public const ACTION_DELETE_MODEL = 'index.php?action=deleteModel&id=';
     // wcsaS
     public const ACTION_ADD_WCSA = 'index.php?action=addWcsa';
     public const ACTION_EDIT_WCSA = 'index.php?action=editWcsa';
@@ -50,6 +54,11 @@ class CoreFunctions
     public const PAGE_FACTORS = 'index.php?page=factors';
     public const PAGE_EDIT_FACTOR = 'index.php?page=editFactor&editId=';
     public const PAGE_ADD_FACTOR = 'index.php?page=addFactor';
+
+     // Relations
+     public const PAGE_RELATIONS = 'index.php?page=relations';
+     public const PAGE_ADD_RELATION = 'index.php?page=addRelation';
+     public const PAGE_EDIT_RELATION = 'index.php?page=editRelation&editId=';
 
     // Models
     public const PAGE_MODELS = 'index.php?page=models';
