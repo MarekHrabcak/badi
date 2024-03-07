@@ -26,7 +26,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
 
             <div class="form-group">
             <label for="wcsa_name">Type WCS name:</label>
-            <input type="text" class="form-control" name="wcsa_name" placeholder="Name" >
+            <input type="text" class="form-control" name="wcsa_name" placeholder="!!! Type WCS only" >
             </div>
 
             <div class="form-group">
@@ -45,7 +45,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -64,7 +64,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -83,7 +83,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -102,7 +102,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -121,7 +121,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -140,7 +140,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -159,7 +159,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php
@@ -178,7 +178,7 @@ $factorFunctions = new FactorFunctions($connection->getConnection());
                     foreach($aspectnameItems as $item)
                     {
                         ?>
-                        <option value="<?php echo $item['aspect_name']?>">
+                        <option value="<?php echo $item['aspect_value']?>">
                             <?php echo $item['aspect_name']?>
                         </option>
                         <?php

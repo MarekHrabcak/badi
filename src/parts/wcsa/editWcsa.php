@@ -27,7 +27,8 @@ if (!CoreFunctions::isGranted()) {
 
 <!--Formular-->
     <form action="<?php echo CoreFunctions::ACTION_EDIT_WCSA; ?>" method="POST">
-        <div class="form-group">
+    <!-- WSC name     -->
+    <div class="form-group">
             <label for="wcsa_name">Change WCS name:</label>
             <input type="text" class="form-control" name="uwcsa_name" value="<?php echo $wcsas['wcsa_name']; ?>">
         </div>
