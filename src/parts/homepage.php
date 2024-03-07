@@ -4,8 +4,8 @@ if (!CoreFunctions::isGranted()) {
     CoreFunctions::redirect(CoreFunctions::PAGE_LOGIN);
 }
 
-$threatFunctions = new ThreatFunctions($connection->getConnection());
-$threatCount = $threatFunctions->displayThreatCount();
+$factorFunctions = new FactorFunctions($connection->getConnection());
+$factorCount = $factorFunctions->displayFactorCount();
 
 $aspectFunctions = new AspectFunctions($connection->getConnection());
 $aspectCount = $aspectFunctions->displayAspectCount();
@@ -42,8 +42,8 @@ $modelCount = $modelFunctions->displayModelCount();
 
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3><?php echo $threatCount; ?></h3>
-                    <p>Threats</p>
+                    <h3><?php echo $factorCount; ?></h3>
+                    <p>Factors</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-file-code"></i>

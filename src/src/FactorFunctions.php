@@ -56,21 +56,17 @@ class FactorFunctions
         }
     }
 
-    // OCALC DATA
-    // public function displayFactorNames()
-    // {
-    //     $query = "SELECT UNIQUE FROM factors";
-    //     $result = $this->connection->query($query);
-    //     if ($result->num_rows > 0) {
-    //         $data = array();
-    //         while ($row = $result->fetch_assoc()) {
-    //             $data[] = $row;
-    //         }
-    //         return $data;
-    //     } else {
-    //         echo "No found records";
-    //     }
-    // }
+    public function displayFactorCount()
+    {
+        $query = "SELECT COUNT(id) AS count FROM factors";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['count'];
+        } else {
+            echo "Record not found";
+        }
+    }
 
     public function insertDataFactor($post)
     {
