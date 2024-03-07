@@ -20,7 +20,6 @@ class CoreFunctions
     public const ACTION_EDIT_RELATION = 'index.php?action=editRelation';
     public const ACTION_EDIT_RELATIONB = 'index.php?action=editRelationb';
     public const ACTION_DELETE_RELATION = 'index.php?action=deleteRelation&id=';
-    public const ACTION_DELETE_RELATIONB = 'index.php?action=deleteRelationb&id=';
      // MODELS
      public const ACTION_ADD_MODEL = 'index.php?action=addModel';
      public const ACTION_EDIT_MODEL = 'index.php?action=editModel';

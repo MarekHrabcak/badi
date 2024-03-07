@@ -13,7 +13,7 @@ class RelationFunctions {
 //    relationS CRUD
     public function displayDataRelations()
     {
-        $query = "SELECT * FROM relations ORDER BY timestamp DESC";
+        $query = "SELECT * FROM relations ORDER BY orderNo ASC";
         $result = $this->connection->query($query);
         if ($result->num_rows > 0) {
             $data = array();
@@ -79,7 +79,7 @@ class RelationFunctions {
 
     public function deleteRecordRelation($id)
     {
-        $query = "DELETE FROM relations WHERE id = '$id'";
+        $query = "DELETE FROM wcsa WHERE id = '$id'";
         $sql = $this->connection->query($query);
         if ($sql == true) {
             header("Location: index.php?page=relations&msg3=delete");

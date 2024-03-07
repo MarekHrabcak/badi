@@ -87,41 +87,31 @@ On this page you can select aspects and by pressing the Calculate button the app
 
 
                 <div class="form-group">
-                    <label for="dataclass">Change dataclass level:</label>
-                    <br>
+                <label for="dataclass">Select data classification level:</label>
                     <select class="form-control"  name="dataclass">
                         <option value=""></option>
                         <?php
                         $aspect_type = "dataclass";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
-                        foreach($wcsaItems as $item)
+                        $aspectnameItems = $aspectFunctions->displayAspectValues($aspect_type);
+                        foreach($aspectnameItems as $item)
                         {
-                            if ($dataclass == $item[$aspect_type]) {
-                                ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                <?php echo $item[$aspect_type]?>
-                                </option>
-                                <?php
-                            } else {
-                                ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
-                                </option>
-                                <?php
-                            }
+                            ?>
+                            <option value="<?php echo $item['aspect_value']?>">
+                                <?php echo $item['aspect_name']?>
+                            </option>
+                            <?php
                         }
                         ?>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="architect">Change architecture:</label>
+                    <label for="architect">Choose Architecture:</label>
                     <br>
                     <select class="form-control"  name="architect">
                         <option value=""></option>
                         <?php
                         $aspect_type = "architect";
-//                        $aspect_type = '$architect';
                         $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
                         foreach($wcsaItems as $item)
                         {
@@ -144,7 +134,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
                 <div class="form-group">
-                    <label for="netloc">Change network location:</label>
+                    <label for="netloc">Choose Network location:</label>
                     <br>
                     <select class="form-control"  name="netloc">
                         <option value=""></option>
@@ -172,7 +162,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
                 <div class="form-group">
-                    <label for="authfact">Change authentication factors:</label>
+                    <label for="authfact">Choose Authentication factors:</label>
                     <br>
                     <select class="form-control"  name="authfact">
                         <option value=""></option>
@@ -200,7 +190,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
                 <div class="form-group">
-                    <label for="sign">Change signing:</label>
+                    <label for="sign">Choose Signing:</label>
                     <br>
                     <select class="form-control"  name="sign">
                         <option value=""></option>
@@ -228,7 +218,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
                 <div class="form-group">
-                    <label for="enc">Change encryption:</label>
+                    <label for="enc">Choose Encryption:</label>
                     <br>
                     <select class="form-control"  name="enc">
                         <option value=""></option>
@@ -256,7 +246,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
                 <div class="form-group">
-                    <label for="userpriv">Change user privileges:</label>
+                    <label for="userpriv">Choose User privileges:</label>
                     <br>
                     <select class="form-control"  name="userpriv">
                         <option value=""></option>

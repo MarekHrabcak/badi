@@ -11,20 +11,21 @@ class ModelFunctions {
 
 
 //    MODELS CRUD
-    public function displayDataModels()
-    {
-        $query = "SELECT * FROM models ORDER BY timestamp DESC";
-        $result = $this->connection->query($query);
-        if ($result->num_rows > 0) {
-            $data = array();
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
-            return $data;
-        } else {
-            echo "No found records";
+public function displayDataModels()
+{
+    $query = "SELECT * FROM models ORDER BY timestamp DESC";
+    $result = $this->connection->query($query);
+    if ($result->num_rows > 0) {
+        $data = array();
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
         }
+        return $data;
+    } else {
+        // No records found, return an empty array
+        return array();
     }
+}
 
     public function displayRecordByIdUsecase($id)
     {
@@ -455,6 +456,21 @@ class ModelFunctions {
             return $row['count'];
         } else {
             echo "Record not found";
+        }
+    }
+
+    public function displayWcsasNames($wcsa_name)
+    {
+        $query = "SELECT * FROM wcsa WHERE 'dataclass' != '0';";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        } else {
+            echo "No found records";
         }
     }
 

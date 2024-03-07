@@ -8,6 +8,6 @@ if (!CoreFunctions::isGranted()) {
 // Delete record from table
 if(isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $modelFunctions = new ModelFunctions($connection->getConnection());
-    $modelFunctions->deleteRecordModel($id);
+    $relationFunctions = new RelationFunctions($connection->getConnection());
+    $relationFunctions->deleteRecordRelation($id);
 }

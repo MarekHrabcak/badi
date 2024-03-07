@@ -206,7 +206,7 @@ All options for input data are predefined and therefore the appli-cation is also
 
         <!--Sieťová lokácia-->
         <div>
-            <h4>Network location in comtext of data inspection</h4>
+            <h4>Network location in context of data inspection</h4>
 
             <p>In the context of data inspection, network location refers to the physical or logical position of a device or system within a computer network where data inspection takes place. This location can vary depending on the architecture of the network and the specific requirements of data inspection techniques.</p>
 
@@ -265,7 +265,7 @@ All options for input data are predefined and therefore the appli-cation is also
 
         <!--Faktory autentizácie-->
         <div>
-            <h4>Authentization factors</h4>
+            <h4>Authentication strength</h4>
 
             <p>Authentication factors are the various elements or methods used to verify the identity of a user attempting to access a system or network. These factors are used in authentication processes to ensure that only authorized individuals or entities gain access to protected resources.</p>
 
