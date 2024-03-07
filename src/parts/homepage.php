@@ -16,21 +16,19 @@ $modelCount = $modelFunctions->displayModelCount();
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Security aspects of digital identity</h1>
+    <h1 class="h2">Dashboard</h1>
 </div>
 
-<div>
-    <h3>Dashboard</h3>
-</div>
 
 <!--Koniec kapitoly-->
     <div class="row">
         <div class="col-lg-4 col-xs-6">
 
-            <div class="small-box bg-info">
+            <div class="small-box bg-info text-center">
                 <div class="inner">
-                    <h3><?php echo $aspectCount; ?></h3>
-                    <p>Aspects</p>
+                <p><h3>Aspects</h3></p>    
+                <h1><?php echo $aspectCount; ?></h1>
+                    
                 </div>
                 <div class="icon">
                     <i class="fas fa-cube"></i>
@@ -40,10 +38,10 @@ $modelCount = $modelFunctions->displayModelCount();
 
         <div class="col-lg-4 col-xs-6">
 
-            <div class="small-box bg-warning">
+            <div class="small-box bg-warning text-center">
                 <div class="inner">
-                    <h3><?php echo $factorCount; ?></h3>
-                    <p>Factors</p>
+                <p><h3>Factors</h3></p>  
+                <h1><?php echo $factorCount; ?></h1>
                 </div>
                 <div class="icon">
                     <i class="fa fa-file-code"></i>
@@ -53,10 +51,10 @@ $modelCount = $modelFunctions->displayModelCount();
 
         <div class="col-lg-4 col-xs-6">
 
-            <div class="small-box bg-success">
+            <div class="small-box bg-success text-center">
                 <div class="inner">
-                    <h3><?php echo $modelCount; ?></h3>
-                    <p>Models</p>
+                    <p><h3>Models</h3></p>     
+                    <h1><?php echo $modelCount; ?></h1>
                 </div>
                 <div class="icon">
                     <i class="fa fa-bug"></i>
@@ -66,10 +64,10 @@ $modelCount = $modelFunctions->displayModelCount();
     </div>
 
 <!--Koniec reportu -->
-
-
     <p>
-<h6>Description</h6>
+    <div>
+        <h3>Description</h3>
+    </div>
         <br>Information protection is an integral part of the modern society communication. Sharing sensitive data, easy accessibility services and increasingly sophisticated threats and vulnerabilities require active protection of sensitive data and minimize impacts on security incidents.
         <br>The thesis points to the security aspects of digital identity in terms of communication between the consumer and service provider, draws attention to the factors entering the identity verification process. Part of the thesis is a functional and technical description of the application that proposes a model for the optimum form of authentication based on the user's inputs. The application is preparing models from data that were obtained from the materials listed in bibliographic links and evaluated according to the OWASP Risk Assessment Framework methodology.
         <br>The output of work is a functional application that proposes a model for optimum authentication based on the user inputs.
