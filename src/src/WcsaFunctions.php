@@ -119,7 +119,7 @@ class WcsaFunctions
 
     public function displayListWcsas()
     {
-        $query = "SELECT * FROM wcsa ORDER BY timestamp DESC";
+        $query = "SELECT * FROM wcsa WHERE wcsa_name = 'WCS' ORDER BY wcsa_name ASC";
         $result = $this->connection->query($query);
         if ($result->num_rows > 0) {
             $data = array();

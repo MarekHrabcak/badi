@@ -133,6 +133,42 @@ class AspectFunctions
         }
     }
 
+    // This works
+    // public function displayAspectDataclassName($aspect_value)
+    // {
+    //     $query = "SELECT aspect_name FROM aspects WHERE aspect_type = 'dataclass' AND aspect_value = '$aspect_value'";
+        
+    //     // SELECT * FROM aspects WHERE aspect_type = '$aspect_type'";
+    //     $result = $this->connection->query($query);
+    //     if ($result->num_rows > 0) {
+    //         $data = array();
+    //         while ($row = $result->fetch_assoc()) {
+    //             $data[] = $row;
+    //         }
+    //         // var_dump($result);
+    //         return $data;
+    //     }else{
+    //         echo "No found records";
+    //     }
+    // }
+
+
+    // Double inputs
+    public function displayAspectDataclassName($aspect_type, $aspect_value)
+    {
+        $query = "SELECT aspect_name FROM aspects WHERE aspect_type = '$aspect_type' AND aspect_value = '$aspect_value'";
+        
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        } else {
+            return array(); // Return an empty array if no records found
+        }
+    }
 
     public function displayAspectCount()
     {

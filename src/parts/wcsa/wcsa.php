@@ -6,6 +6,7 @@ if (!CoreFunctions::isGranted()) {
 
 
 $wcsaFunctions = new WcsaFunctions($connection->getConnection());
+$aspectFunctions = new AspectFunctions($connection->getConnection());
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -33,17 +34,15 @@ In the following table, you can add your own scenario with which the application
         <table class="table table-striped table-sm ">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
                     <th>Desc.</th>
-                    <th>Auth</th>
+                    <th>Auth. Protocol</th>
                     <th>DataClass</th>
-                    <th>Arch.</th>
+                    <th>Architecture</th>
                     <th>Location</th>
                     <th>Auth fact.</th>
-                    <th>Sign</th>
-                    <th>Enc</th>
-                    <th>Priv.</th>
+                    <th>Signing</th>
+                    <th>Encryption</th>
+                    <th>Privileges</th>
                     <th>Risk</th>
                     <th>Lik.</th>
                     <th>Lik. value</th>
@@ -60,17 +59,101 @@ In the following table, you can add your own scenario with which the application
                 $wcsaColour = $wcsaFunctions->getRiskColour($wcsa['risklevel']);
                 ?>
                     <tr>
-                        <td><?php echo $wcsa['id'] ?></td>
-                        <td><?php echo $wcsa['wcsa_name'] ?></td>
+                        <!-- Description -->
                         <td><?php echo $wcsa['wcsa_description'] ?></td>
-                        <td><?php echo $wcsa['authprot'] ?></td>
-                        <td><?php echo $wcsa['dataclass'] ?></td>
-                        <td><?php echo $wcsa['architect'] ?></td>
-                        <td><?php echo $wcsa['netloc'] ?></td>
-                        <td><?php echo $wcsa['authfact'] ?></td>
-                        <td><?php echo $wcsa['sign'] ?></td>
-                        <td><?php echo $wcsa['enc'] ?></td>
-                        <td><?php echo $wcsa['userpriv'] ?></td>
+                        <!-- Auth protocol -->
+                        <td><?php
+                            $aspect_type = "authprot";
+                            $aspect_value = $wcsa['authprot'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+                        <!-- Data classification -->
+                        <td><?php 
+                            $aspect_type = "dataclass";
+                            $aspect_value = $wcsa['dataclass'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+                        <!-- Architecture -->
+                        <td><?php 
+                            $aspect_type = "architect";
+                            $aspect_value = $wcsa['architect'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+                        
+                        <!-- Net location -->
+                        <td><?php 
+                            $aspect_type = "netloc";
+                            $aspect_value = $wcsa['netloc'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+
+                        <!-- Auth factors -->
+                        <td><?php 
+                            $aspect_type = "authfact";
+                            $aspect_value = $wcsa['authfact'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+                        <!-- Signing -->
+                        <td><?php 
+                            $aspect_type = "sign";
+                            $aspect_value = $wcsa['sign'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+                        <!-- Encryption -->
+                        <td><?php 
+                            $aspect_type = "enc";
+                            $aspect_value = $wcsa['enc'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+
+                        <!-- User priviledges -->
+                        <td><?php 
+                            $aspect_type = "userpriv";
+                            $aspect_value = $wcsa['userpriv'];
+                            $aspectName = $aspectFunctions->displayAspectDataclassName($aspect_type, $aspect_value);
+                            if (!empty($aspectName) && isset($aspectName[0]['aspect_name'])) {
+                                echo $aspectName[0]['aspect_name'];
+                            } else {
+                                echo "Not found.";
+                            }
+                        ?></td>
+
+                        <!-- Risk ranking -->
                         <td class="<?php echo $wcsaColour; ?>"><b><?php echo $wcsa['risklevel'] ?></b></td>
                         <td><?php echo $wcsa['liklevel'] ?></td>
                         <td><?php echo $wcsa['likvalue'] ?></td>

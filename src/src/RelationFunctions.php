@@ -26,6 +26,22 @@ class RelationFunctions {
         }
     }
 
+    public function displayListWcsasRelations()
+    {
+        $query = "SELECT * FROM wcsa WHERE wcsa_name != 'WCS' ORDER BY wcsa_name ASC";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+                    var_dump($sql);
+        }else{
+            echo "No found records";
+        }
+    }
+
     public function displayRecordByIdUsecase($id)
     {
         $query = "SELECT * FROM usecases WHERE id = '$id'";
@@ -458,5 +474,103 @@ class RelationFunctions {
         }
     }
 
+    public function updateRecordRelationb($postData)
+    {
+        $id = $this->connection->real_escape_string($_POST['id']);
+        $wcsa_name = $this->connection->real_escape_string($_POST['uwcsa_name']);
+        $wcsa_description = $this->connection->real_escape_string($_POST['uwcsa_description']);
+        $dataclass = $this->connection->real_escape_string($_POST['udataclass']);
+        $architect = $this->connection->real_escape_string($_POST['uarchitect']);
+        $authprot = $this->connection->real_escape_string($_POST['uauthprot']);
+        $netloc = $this->connection->real_escape_string($_POST['unetloc']);
+        $authfact = $this->connection->real_escape_string($_POST['uauthfact']);
+        $sign = $this->connection->real_escape_string($_POST['usign']);
+        $enc = $this->connection->real_escape_string($_POST['uenc']);
+        $userpriv = $this->connection->real_escape_string($_POST['uuserpriv']);
+
+//        $lav = 0 ;
+//        var_dump($lav); die();
+
+        $sl = 0;
+        if (!empty($_POST['usl'])) {
+            $sl = $this->connection->real_escape_string($_POST['usl']);
+        }
+
+        $m = 0;
+        if (!empty($_POST['um'])) {
+            $m = $this->connection->real_escape_string($_POST['um']);
+        }
+
+        $o = 0;
+        if (!empty($_POST['uo'])) {
+            $o = $this->connection->real_escape_string($_POST['uo']);
+        }
+
+        $s = 0;
+        if (!empty($_POST['us'])) {
+            $s = $this->connection->real_escape_string($_POST['us']);
+        }
+
+        $ed = 0;
+        if (!empty($_POST['ued'])) {
+            $ed = $this->connection->real_escape_string($_POST['ued']);
+        }
+
+        $ee = 0;
+        if (!empty($_POST['uee'])) {
+            $ee = $this->connection->real_escape_string($_POST['uee']);
+        }
+
+        $a = 0;
+        if (!empty($_POST['ua'])) {
+            $a = $this->connection->real_escape_string($_POST['ua']);
+        }
+
+        $ide = 0;
+        if (!empty($_POST['uide'])) {
+            $ide = $this->connection->real_escape_string($_POST['uide']);
+        }
+
+        $lc = 0;
+        if (!empty($_POST['ulc'])) {
+            $lc = $this->connection->real_escape_string($_POST['ulc']);
+        }
+
+        $li = 0;
+        if (!empty($_POST['uli'])) {
+            $li = $this->connection->real_escape_string($_POST['uli']);
+        }
+
+        $lav = 0 ;
+        if (!empty($_POST['ulav'])) {
+            $lav = $this->connection->real_escape_string($_POST['ulav']);
+        }
+
+        $lac = 0 ;
+        if (!empty($_POST['ulac'])) {
+            $lac = $this->connection->real_escape_string($_POST['ulac']);
+        }
+
+        $fd = 0;
+        if (!empty($_POST['ufd'])) {
+            $fd = $this->connection->real_escape_string($_POST['ufd']);
+        }
+
+        $rd = 0;
+        if (!empty($_POST['urd'])) {
+            $rd = $this->connection->real_escape_string($_POST['urd']);
+        }
+
+        $nc = 0;
+        if (!empty($_POST['unc'])) {
+            $nc = $this->connection->real_escape_string($_POST['unc']);
+        }
+
+        $pv = 0;
+        if (!empty($_POST['upv'])) {
+            $pv = $this->connection->real_escape_string($_POST['upv']);
+        }
+
 }
 
+}

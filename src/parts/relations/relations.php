@@ -5,6 +5,7 @@ if (!CoreFunctions::isGranted()) {
 }
 
 $relationFunctions = new RelationFunctions($connection->getConnection());
+// $wcsaFunctions = new WcsaFunctions($connection->getConnection());
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -22,9 +23,7 @@ The following table shows the matrix of relationships between aspects and factor
 <div>
     <h3>Relation Matrix</h3>
 </div>
-
-
-    <div>
+ 
         <div class="table-responsive">
             <table class="table table-striped table-sm ">
                 <thead>
@@ -86,9 +85,82 @@ The following table shows the matrix of relationships between aspects and factor
                 </tbody>
             </table>
         </div>
-    </div>
+        <div> 
+            text
+        </div>
+
+        <div>
+            <h3>List
+                <a href="<?php echo CoreFunctions::PAGE_ADD_RELATION; ?>" class="btn btn-primary" style="float:right;">New</a>
+            </h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm ">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                            <th>Auth</th>
+                            <th>DataClass</th>
+                            <th>Arch.</th>
+                            <th>Location</th>
+                            <th>Auth fact.</th>
+                            <th>Sign</th>
+                            <th>Enc</th>
+                            <th>Priv.</th>
+                            <th>Risk</th>
+                            <th>Lik.</th>
+                            <th>Lik. value</th>
+                            <th>Imp.</th>
+                            <th>Imp. value</th>
+                            <th>Timestamp</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $relations = $relationFunctions->displayListWcsasRelations();
+                    foreach ($relations as $relation) {
+                    $relationColour = $relationFunctions->getRiskColour($relation['risklevel']);
+                    ?>
+                        <tr>
+                            <td><?php echo $relation['wcsa_name'] ?></td>
+                            <td><?php echo $relation['wcsa_description'] ?></td>
+                            <td><?php echo $relation['authprot'] ?></td>
+                            <td><?php echo $relation['dataclass'] ?></td>
+                            <td><?php echo $relation['architect'] ?></td>
+                            <td><?php echo $relation['netloc'] ?></td>
+                            <td><?php echo $relation['authfact'] ?></td>
+                            <td><?php echo $relation['sign'] ?></td>
+                            <td><?php echo $relation['enc'] ?></td>
+                            <td><?php echo $relation['userpriv'] ?></td>
+                            <td class="<?php echo $relationColour; ?>"><b><?php echo $relation['risklevel'] ?></b></td>
+                            <td><?php echo $relation['liklevel'] ?></td>
+                            <td><?php echo $relation['likvalue'] ?></td>
+                            <td><?php echo $relation['implevel'] ?></td>
+                            <td><?php echo $relation['impvalue'] ?></td>
+                            <td><?php echo $relation['timestamp'] ?></td>
+                            <td>
+                                <a href="<?php echo CoreFunctions::PAGE_EDIT_RELATIONB . $relation['id'] ?>" style="color:green" target="_blank">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>&nbsp
+                                <a href="<?php echo CoreFunctions::ACTION_DELETE_RELATIONB . $relation['id'] ?>" style="color:red" onclick="confirm('Are you sure want to delete this record')">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+        </div>
 
 
+<!--1st Calculation -->
+<script>$(document).ready(function () {
+        calculate()
+    } )</script>
 
+<!--</main>-->
 
 

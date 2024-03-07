@@ -18,7 +18,9 @@ class CoreFunctions
     // RELATIONS
     public const ACTION_ADD_RELATION = 'index.php?action=addRelation';
     public const ACTION_EDIT_RELATION = 'index.php?action=editRelation';
+    public const ACTION_EDIT_RELATIONB = 'index.php?action=editRelationb';
     public const ACTION_DELETE_RELATION = 'index.php?action=deleteRelation&id=';
+    public const ACTION_DELETE_RELATIONB = 'index.php?action=deleteRelationb&id=';
      // MODELS
      public const ACTION_ADD_MODEL = 'index.php?action=addModel';
      public const ACTION_EDIT_MODEL = 'index.php?action=editModel';
@@ -59,6 +61,8 @@ class CoreFunctions
      public const PAGE_RELATIONS = 'index.php?page=relations';
      public const PAGE_ADD_RELATION = 'index.php?page=addRelation';
      public const PAGE_EDIT_RELATION = 'index.php?page=editRelation&editId=';
+     public const PAGE_ADD_RELATIONB = 'index.php?page=addRelationb';
+     public const PAGE_EDIT_RELATIONB = 'index.php?page=editRelationb&editId=';
 
     // Models
     public const PAGE_MODELS = 'index.php?page=models';

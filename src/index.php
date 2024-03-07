@@ -66,6 +66,9 @@ if (isset($_GET['action']) && $_GET['action'] != '') {
 
     } elseif ($action == 'editRelation') {
         include_once "parts/relations/editRelationProcess.php";
+    
+    } elseif ($action == 'editRelationb') {
+        include_once "parts/relations/editRelationProcessb.php";
 
     } elseif ($action == 'editModel') {
         include_once "parts/models/editModelProcess.php";
@@ -189,6 +192,8 @@ if (isset($_GET['page']) && $_GET['page'] != '') {
                         include_once "parts/relations/addrelation.php";
                     } elseif ($page == 'editRelation' ) {
                         include_once "parts/relations/editRelation.php";
+                    } elseif ($page == 'editRelationb' ) {
+                        include_once "parts/relations/editRelationb.php";
                         //  models
                      } elseif ($page == 'models' ) {
                          include_once "parts/models/models.php";

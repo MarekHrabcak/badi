@@ -48,7 +48,7 @@ if (!CoreFunctions::isGranted()) {
                 {
                     ?>
                     <option value="<?php echo $item['aspect_value']?>">
-                        <?php echo $item['aspect_value']?>
+                        <?php echo $item['aspect_name']?>
                     </option>
                     <?php
                 }
@@ -86,7 +86,7 @@ if (!CoreFunctions::isGranted()) {
                 {
                     ?>
                     <option value="<?php echo $item['aspect_value']?>">
-                        <?php echo $item['aspect_value']?>
+                        <?php echo $item['aspect_name']?>
                     </option>
                     <?php
                 }
