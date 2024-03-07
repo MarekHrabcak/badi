@@ -12,7 +12,7 @@ class FactorFunctions
     
     public function displayDataFactors()
     {
-        $query = "SELECT * FROM factors ORDER BY factor_name ASC";
+        $query = "SELECT * FROM factors ORDER BY factor_group, factor_fullname, factor_level ASC";
         $result = $this->connection->query($query);
         if ($result->num_rows > 0) {
             $data = array();

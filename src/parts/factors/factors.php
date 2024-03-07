@@ -26,9 +26,10 @@ The following table contains a list of OWASP factors (explanations for abbreviat
             <thead>
             <tr>
                 <!-- <th style="width: 5%">#</th> -->
-                <th style="width: 5%">Level</th>
-                <th style="width: 5%">Category</th>
+                <th style="width: 25%">Group</th>
+                <th style="width: 30%">Name</th>
                 <th>Description</th>
+                <th>Level</th>
                 <th></th>
             </tr>
         </thead>
@@ -41,10 +42,11 @@ The following table contains a list of OWASP factors (explanations for abbreviat
             foreach ($factors as $factor) {
                 ?>
                 <tr>
-                    <!-- <td><?php echo $factor['id'] ?></td> -->
-                    <td><?php echo $factor['factor_level'] ?></td>
-                    <td><?php echo $factor['factor_name'] ?></td>
+                    <td><?php echo $factor['factor_group'] ?></td>
+                    <td><?php echo $factor['factor_fullname'] ?></td>
                     <td><?php echo $factor['factor_description'] ?></td>
+                    <td><?php echo $factor['factor_level'] ?></td>
+                    
                     <td style="text-align: right">
                         <a href="<?php echo CoreFunctions::PAGE_EDIT_FACTOR . $factor['id'] ?>" style="color:green">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
