@@ -163,42 +163,48 @@ public function displayDataModels()
             $model_description = $this->connection->real_escape_string($_POST['model_description']);
         }
 
-        $dataclass = '';
-        if (isset($_POST['dataclass'])) {
+        $dataclass = '0';
+        if (isset($_POST['dataclass']) && $_POST['dataclass'] !== '') {
             $dataclass = $this->connection->real_escape_string($_POST['dataclass']);
         }
 
-        $architect = '';
-        if (isset($_POST['architect'])) {
+        $architect = '0';
+        if (isset($_POST['architect']) && $_POST['architect'] !== '') {
             $architect = $this->connection->real_escape_string($_POST['architect']);
         }
 
-        $netloc = '';
-        if (isset($_POST['netloc'])) {
+        $netloc = '0';
+        if (isset($_POST['netloc']) && $_POST['netloc'] !== '') {
             $netloc = $this->connection->real_escape_string($_POST['netloc']);
         }
 
-        $authfact = '';
-        if (isset($_POST['authfact'])) {
+        $authfact = '0';
+        if (isset($_POST['authfact']) && $_POST['authfact'] !== '') {
             $authfact = $this->connection->real_escape_string($_POST['authfact']);
         }
 
-        $sign = '';
-        if (isset($_POST['sign'])) {
+        $sign = '0';
+        if (isset($_POST['sign']) && $_POST['sign'] !== '') {
             $sign = $this->connection->real_escape_string($_POST['sign']);
         }
 
-        $enc = '';
-        if (isset($_POST['enc'])) {
+        $enc = '0';
+        if (isset($_POST['enc']) && $_POST['enc'] !== '') {
             $enc = $this->connection->real_escape_string($_POST['enc']);
         }
 
-        $userpriv = '';
-        if (isset($_POST['userpriv'])) {
+        $userpriv = '0';
+        if (isset($_POST['userpriv']) && $_POST['userpriv'] !== '') {
             $userpriv = $this->connection->real_escape_string($_POST['userpriv']);
         }
 
-//        var_dump($model_name, $model_description, $dataclass, $architect, $netloc, $authfact, $sign, $enc, $userpriv);
+    //    var_dump($model_name, $model_description, $dataclass, $architect, $netloc, $authfact, $sign, $enc, $userpriv);
+       
+
+       $id_list = implode(',', [$dataclass, $architect, $netloc, $authfact, $sign, $enc, $userpriv]);
+    //    var_dump($id_list);
+
+
 
         $results = [];
 
@@ -233,10 +239,13 @@ public function displayDataModels()
             if (!empty($userpriv)) {
                 $conditions[] = "userpriv='$userpriv'";
             }
-
+            
+        
 //            Priprava podmienky do SQL SELECT
 
             if (!empty($conditions)) {
+
+
 //                $conditions[] = 0;
 //                $conditions[] = "authprot='$type'";
 //                V podmienke implode(" OR ", $conditions) by sa zisla namiesto OR lepsi operator alebo funkcia, pre ADN nefunguje MIN() v Selecte
@@ -256,26 +265,75 @@ public function displayDataModels()
 //                $sqlselect = '((' . implode(" OR ", $conditions) . ") AND authprot='$type') OR (authprot='$type' AND factor_name='TMP0')";
 
 //       31.3.2022 Tato podmienka len spocita minimum, nema ziadnu vazbu na aspekt
-                $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND wcsa_name='TMP0')";
+                // $sqlselect = '(' . implode(" OR ", $conditions) . ") OR (authprot='$type' AND wcsa_name='TMP0')";
+               
+                // $id_list = $conditions;
+
 
 
             } else {
-                $sqlselect = "authprot='$type' AND wcsa_name='TMP0'";
+            //    var_dump($conditions);
             }
 
 //                        var_dump($sqlselect);
 
 
-            $query = "SELECT 
-                    MIN(sl) AS sl, MIN(m) AS m, MIN(o) AS o, MIN(s) AS s, 
-                    MIN(ed) AS ed, MIN(ee) AS ee, MIN(a) AS a, MIN(ide) AS ide,
-                    MIN(lc) AS lc, MIN(li) AS li, MIN(lav) AS lav, MIN(lac) AS lac,
-                    MIN(fd) AS fd, MIN(rd) AS rd, MIN(nc) AS nc, MIN(pv) AS pv, MIN(a) AS a
-                    FROM `wcsa` WHERE $sqlselect ";
+            // $query = "SELECT 
+            //         MIN(sl) AS sl, MIN(m) AS m, MIN(o) AS o, MIN(s) AS s, 
+            //         MIN(ed) AS ed, MIN(ee) AS ee, MIN(a) AS a, MIN(ide) AS ide,
+            //         MIN(lc) AS lc, MIN(li) AS li, MIN(lav) AS lav, MIN(lac) AS lac,
+            //         MIN(fd) AS fd, MIN(rd) AS rd, MIN(nc) AS nc, MIN(pv) AS pv, MIN(a) AS a
+            //         FROM `wcsa` WHERE $sqlselect ";
 
-//var_dump($query);
+
+            $query ="SELECT 
+                        COALESCE(MIN(my_sl), 0) AS min_sl,
+                        COALESCE(MIN(my_m), 0) AS min_m,
+                        COALESCE(MIN(my_o), 0) AS min_o,
+                        COALESCE(MIN(my_s), 0) AS min_s,
+                        COALESCE(MIN(my_ed), 0) AS min_ed,
+                        COALESCE(MIN(my_ee), 0) AS min_ee,
+                        COALESCE(MIN(my_a), 0) AS min_a,
+                        COALESCE(MIN(my_ide), 0) AS min_ide,
+                        COALESCE(MIN(my_lc), 0) AS min_lc, 
+                        COALESCE(MIN(my_li), 0) AS min_li, 
+                        COALESCE(MIN(my_lav), 0) AS min_lav, 
+                        COALESCE(MIN(my_lac), 0) AS min_lac,
+                        COALESCE(MIN(my_fd), 0) AS min_fd, 
+                        COALESCE(MIN(my_rd), 0) AS min_rd, 
+                        COALESCE(MIN(my_nc), 0) AS min_nc, 
+                        COALESCE(MIN(my_pv), 0) AS min_pv
+                    FROM (
+                            SELECT 
+                                sl AS my_sl,
+                                m AS my_m,
+                                o AS my_o,
+                                s AS my_s,
+                                ed AS my_ed,
+                                ee AS my_ee,
+                                a AS my_a,
+                                ide AS my_ide,
+                                lc AS my_lc,
+                                li AS my_li,
+                                lav AS my_lav,
+                                lac AS my_lac,
+                                fd AS my_fd,
+                                rd AS my_rd,
+                                nc AS my_nc,
+                                pv AS my_pv
+                            FROM `wcsa` 
+                        WHERE id IN ($id_list)
+                    ) as my_values;";
+// var_dump($query);
 
             $result = $this->connection->query($query);
+
+            // Fetch the row
+            // $row = $result->fetch_assoc();
+
+            // Output the overall average
+            // -- echo "Overall Average: " . $row['overall_average'];
+
 
             if ($result->num_rows > 0) {
                 $data2 = array();
@@ -290,10 +348,12 @@ public function displayDataModels()
                     $row['sign'] = $sign;
                     $row['enc'] = $enc;
                     $row['userpriv'] = $userpriv;
+                    // var_dump($type, $model_name,$model_description, $dataclass, $architect, $netloc, $authfact, $sign, $enc, $userpriv);
+                    
 
                     //        Vypocet priemerov pre lik a imp
-                    $likvalue = CalculationFunctions::calculateAverage($row['sl'],$row['m'],$row['o'],$row['s'],$row['ed'],$row['ee'],$row['a'],$row['ide']);
-                    $impvalue = CalculationFunctions::calculateAverage($row['lc'],$row['li'],$row['lav'],$row['lac'],$row['fd'],$row['rd'],$row['nc'],$row['pv']);
+                    $likvalue = CalculationFunctions::calculateAverage($row['min_sl'],$row['min_m'],$row['min_o'],$row['min_s'],$row['min_ed'],$row['min_ee'],$row['min_a'],$row['min_ide']);
+                    $impvalue = CalculationFunctions::calculateAverage($row['min_lc'],$row['min_li'],$row['min_lav'],$row['min_lac'],$row['min_fd'],$row['min_rd'],$row['min_nc'],$row['min_pv']);
 
                     //        Vypocet rizika premennych
                     list($liklevel, $implevel, $risklevel) = CalculationFunctions::calculateRiskLevel($likvalue,$impvalue);
@@ -319,8 +379,14 @@ public function displayDataModels()
                 echo "No found records";
             }
         }
+
+
         return $results;
+
+
+
     }
+
 
 
     public function getAuthprotTypes()
@@ -473,6 +539,110 @@ public function displayDataModels()
             echo "No found records";
         }
     }
+
+
+    function calculateOverallAverage($id_list) {
+
+        // Prepare the SQL statement with placeholders
+        $query = "
+        SELECT 
+            (COALESCE(min_sl, 0) + COALESCE(min_m, 0) + COALESCE(min_o, 0) + COALESCE(min_s, 0) + COALESCE(min_ed, 0) + COALESCE(min_ee, 0) + COALESCE(min_a, 0) + COALESCE(min_ide, 0)) / 8 AS overall_average
+        FROM (
+            SELECT 
+                MIN(my_sl) AS min_sl,
+                MIN(my_m) AS min_m,
+                MIN(my_o) AS min_o,
+                MIN(my_s) AS min_s,
+                MIN(my_ed) AS min_ed,
+                MIN(my_ee) AS min_ee,
+                MIN(my_a) AS min_a,
+                MIN(my_ide) AS min_ide
+            FROM (
+                SELECT 
+                    sl AS my_sl,
+                    m AS my_m,
+                    o AS my_o,
+                    s AS my_s,
+                    ed AS my_ed,
+                    ee AS my_ee,
+                    a AS my_a,
+                    ide AS my_ide
+                FROM `wcsa` 
+                WHERE FIND_IN_SET(id, :id_list) > 0
+            ) AS my_values
+        ) AS myOutput;
+        ";
+
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+            return $data;
+        } else {
+            echo "No found records";
+        }
+    }
+
+
+    function calculateOverallAverage2($model_name, $model_description, $dataclass, $architect, $netloc, $authfact, $sign, $enc, $userpriv) {
+        
+    
+        // Prepare the SQL statement with placeholders
+        $query = "SELECT 
+            (COALESCE(min_sl, 0) + COALESCE(min_m, 0) + COALESCE(min_o, 0) + COALESCE(min_s, 0) + COALESCE(min_ed, 0) + COALESCE(min_ee, 0) + COALESCE(min_a, 0) + COALESCE(min_ide, 0)) / 8 AS overall_average
+        FROM (
+            SELECT 
+                MIN(my_sl) AS min_sl,
+                MIN(my_m) AS min_m,
+                MIN(my_o) AS min_o,
+                MIN(my_s) AS min_s,
+                MIN(my_ed) AS min_ed,
+                MIN(my_ee) AS min_ee,
+                MIN(my_a) AS min_a,
+                MIN(my_ide) AS min_ide
+            FROM (
+                SELECT 
+                    sl AS my_sl,
+                    m AS my_m,
+                    o AS my_o,
+                    s AS my_s,
+                    ed AS my_ed,
+                    ee AS my_ee,
+                    a AS my_a,
+                    ide AS my_ide
+                FROM `wcsa` 
+                WHERE FIND_IN_SET(id, :id_list) > 0
+            ) AS my_values
+        ) AS myOutput;
+        ";
+
+        // Establish a connection to the database
+        $pdo = $this->connection->query($query);
+       
+    
+        // Prepare the statement
+        $stmt = $pdo->prepare($query);
+    
+        // Bind the parameter
+        $stmt->bindParam(':id_list', $id_list);
+    
+        // Execute the query
+        $stmt->execute();
+    
+        // Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Close the connection
+        $pdo = null;
+    
+        // Return the overall average
+        return $result['overall_average'];
+    }
+
+
+
 
 }
 

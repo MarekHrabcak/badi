@@ -86,24 +86,38 @@ On this page you can select aspects and by pressing the Calculate button the app
                 </div>
 
 
+
+
+
                 <div class="form-group">
-                <label for="dataclass">Select data classification level:</label>
+                    <label for="dataclass">Select data classification level:</label>
+                    <br>
                     <select class="form-control"  name="dataclass">
                         <option value=""></option>
                         <?php
                         $aspect_type = "dataclass";
-                        $aspectnameItems = $aspectFunctions->displayAspectValues($aspect_type);
-                        foreach($aspectnameItems as $item)
+                        $wcsaItems = $wcsaFunctions->displayDataclassWcsa();
+                        foreach($wcsaItems as $item)
                         {
-                            ?>
-                            <option value="<?php echo $item['aspect_value']?>">
-                                <?php echo $item['aspect_name']?>
-                            </option>
-                            <?php
+                            if ($dataclass == $item[$aspect_type]) {
+                                ?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
+                                </option>
+                                <?php
+                            } else {
+                                ?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
+                                </option>
+                                <?php
+                            }
                         }
                         ?>
                     </select>
                 </div>
+
+
 
                 <div class="form-group">
                     <label for="architect">Choose Architecture:</label>
@@ -112,19 +126,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "architect";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displayArchitectWcsa();
                         foreach($wcsaItems as $item)
                         {
                             if ($architect == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -140,19 +154,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "netloc";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displayNetlocWcsa();
                         foreach($wcsaItems as $item)
                         {
                             if ($netloc == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -168,19 +182,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "authfact";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displayAuthfactWcsa($aspect_type);
                         foreach($wcsaItems as $item)
                         {
                             if ($authfact == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -196,19 +210,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "sign";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displaySignWcsa($aspect_type);
                         foreach($wcsaItems as $item)
                         {
                             if ($sign == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -224,19 +238,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "enc";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displayEncWcsa($aspect_type);
                         foreach($wcsaItems as $item)
                         {
                             if ($enc == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -252,19 +266,19 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <option value=""></option>
                         <?php
                         $aspect_type = "userpriv";
-                        $wcsaItems = $wcsaFunctions->displayDataWcsas($aspect_type);
+                        $wcsaItems = $wcsaFunctions->displayUserprivWcsa($aspect_type);
                         foreach($wcsaItems as $item)
                         {
                             if ($userpriv == $item[$aspect_type]) {
                                 ?>
-                                <option selected="selected" value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option selected="selected" value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             } else {
                                 ?>
-                                <option value="<?php echo $item[$aspect_type]?>">
-                                    <?php echo $item[$aspect_type]?>
+                                <option value="<?php echo $item['id']?>">
+                                    <?php echo $item['wcsa_name']?>
                                 </option>
                                 <?php
                             }
@@ -336,22 +350,22 @@ On this page you can select aspects and by pressing the Calculate button the app
                         <tr>
                             <!-- <td><?php echo $item['model_name'] ?></td> -->
                             <td><?php echo $item['type'] ?></td>
-                            <td><?php echo $item['sl'] ?></td>
-                            <td><?php echo $item['m'] ?></td>
-                            <td><?php echo $item['o'] ?></td>
-                            <td><?php echo $item['s'] ?></td>
-                            <td><?php echo $item['ed'] ?></td>
-                            <td><?php echo $item['ee'] ?></td>
-                            <td><?php echo $item['a'] ?></td>
-                            <td><?php echo $item['ide'] ?></td>
-                            <td><?php echo $item['lc'] ?></td>
-                            <td><?php echo $item['li'] ?></td>
-                            <td><?php echo $item['lav'] ?></td>
-                            <td><?php echo $item['lac'] ?></td>
-                            <td><?php echo $item['fd'] ?></td>
-                            <td><?php echo $item['rd'] ?></td>
-                            <td><?php echo $item['nc'] ?></td>
-                            <td><?php echo $item['pv'] ?></td>
+                            <td><?php echo $item['min_sl'] ?></td>
+                            <td><?php echo $item['min_m'] ?></td>
+                            <td><?php echo $item['min_o'] ?></td>
+                            <td><?php echo $item['min_s'] ?></td>
+                            <td><?php echo $item['min_ed'] ?></td>
+                            <td><?php echo $item['min_ee'] ?></td>
+                            <td><?php echo $item['min_a'] ?></td>
+                            <td><?php echo $item['min_ide'] ?></td>
+                            <td><?php echo $item['min_lc'] ?></td>
+                            <td><?php echo $item['min_li'] ?></td>
+                            <td><?php echo $item['min_lav'] ?></td>
+                            <td><?php echo $item['min_lac'] ?></td>
+                            <td><?php echo $item['min_fd'] ?></td>
+                            <td><?php echo $item['min_rd'] ?></td>
+                            <td><?php echo $item['min_nc'] ?></td>
+                            <td><?php echo $item['min_pv'] ?></td>
                             <td class="<?php echo $modelColour; ?>"><b><?php echo $item['risklevel'] ?></td>
                             <td><?php echo $item['likvalue'] ?></td>
                             <td><?php echo $item['liklevel'] ?></td>
@@ -377,22 +391,22 @@ On this page you can select aspects and by pressing the Calculate button the app
 
 
                                     <input type="hidden" name="type" id="type" value="<?php echo $item['type'] ?>">
-                                    <input type="hidden" name="sl" id="sl" value="<?php echo $item['sl'] ?>">
-                                    <input type="hidden" name="m" id="m" value="<?php echo $item['m'] ?>">
-                                    <input type="hidden" name="o" id="o" value="<?php echo $item['o'] ?>">
-                                    <input type="hidden" name="s" id="s" value="<?php echo $item['s'] ?>">
-                                    <input type="hidden" name="lc" id="lc" value="<?php echo $item['lc'] ?>">
-                                    <input type="hidden" name="lav" id="lav" value="<?php echo $item['lav'] ?>">
-                                    <input type="hidden" name="lac" id="lac" value="<?php echo $item['lac'] ?>">
-                                    <input type="hidden" name="ed" id="ed" value="<?php echo $item['ed'] ?>">
-                                    <input type="hidden" name="ee" id="ee" value="<?php echo $item['ee'] ?>">
-                                    <input type="hidden" name="a" id="a" value="<?php echo $item['a'] ?>">
-                                    <input type="hidden" name="ide" id="ide" value="<?php echo $item['ide'] ?>">
-                                    <input type="hidden" name="fd" id="fd" value="<?php echo $item['fd'] ?>">
-                                    <input type="hidden" name="rd" id="rd" value="<?php echo $item['rd'] ?>">
-                                    <input type="hidden" name="nc" id="nc" value="<?php echo $item['nc'] ?>">
-                                    <input type="hidden" name="pv" id="pv" value="<?php echo $item['pv'] ?>">
-                                    <input type="hidden" name="li" id="li" value="<?php echo $item['li'] ?>">
+                                    <input type="hidden" name="sl" id="sl" value="<?php echo $item['min_sl'] ?>">
+                                    <input type="hidden" name="m" id="m" value="<?php echo $item['min_m'] ?>">
+                                    <input type="hidden" name="o" id="o" value="<?php echo $item['min_o'] ?>">
+                                    <input type="hidden" name="s" id="s" value="<?php echo $item['min_s'] ?>">
+                                    <input type="hidden" name="lc" id="lc" value="<?php echo $item['min_lc'] ?>">
+                                    <input type="hidden" name="lav" id="lav" value="<?php echo $item['min_lav'] ?>">
+                                    <input type="hidden" name="lac" id="lac" value="<?php echo $item['min_lac'] ?>">
+                                    <input type="hidden" name="ed" id="ed" value="<?php echo $item['min_ed'] ?>">
+                                    <input type="hidden" name="ee" id="ee" value="<?php echo $item['min_ee'] ?>">
+                                    <input type="hidden" name="a" id="a" value="<?php echo $item['min_a'] ?>">
+                                    <input type="hidden" name="ide" id="ide" value="<?php echo $item['min_ide'] ?>">
+                                    <input type="hidden" name="fd" id="fd" value="<?php echo $item['min_fd'] ?>">
+                                    <input type="hidden" name="rd" id="rd" value="<?php echo $item['min_rd'] ?>">
+                                    <input type="hidden" name="nc" id="nc" value="<?php echo $item['min_nc'] ?>">
+                                    <input type="hidden" name="pv" id="pv" value="<?php echo $item['min_pv'] ?>">
+                                    <input type="hidden" name="li" id="li" value="<?php echo $item['min_li'] ?>">
                                     <input type="submit" name="save" class="btn btn-primary" style="float:right;" value="save">
                                 </form>
 

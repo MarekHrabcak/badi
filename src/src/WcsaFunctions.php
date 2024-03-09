@@ -134,22 +134,251 @@ class WcsaFunctions
 
     public function displayDataWcsas($aspect_type)
     {
-//        var_dump($aspect_type); die();
-        $query = "SELECT DISTINCT $aspect_type FROM wcsa WHERE $aspect_type IS NOT NULL";
+
+        $query = "SELECT DISTINCT $aspect_type FROM wcsa WHERE $aspect_type IS NOT NULL AND $aspect_type != 0";
         $result = $this->connection->query($query);
 
         if ($result->num_rows > 0) {
             $data = array();
             while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
+                // var_dump($data); die();
             }
 
             return $data;
+
 
         } else {
             echo "No found records";
         }
     }
+
+    public function displayWcsaName($aspect_type)
+    {
+        $query = "SELECT * FROM wcsa WHERE '$aspect_type' IS NOT NULL";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+                                // var_dump($data); die();
+            }
+            return $data;
+        }else{
+            echo "No found records";
+        }
+    }
+
+    // addModel function that finds unique dataclass WCS's
+    public function displayDataclassWcsa()
+    {
+        $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'dc(%'
+                AND dataclass IS NOT NULL AND dataclass <> ''
+                AND id IN (
+                    SELECT MIN(id)
+                    FROM wcsa
+                    WHERE wcsa_name LIKE 'dc(%'
+                    AND dataclass IS NOT NULL AND dataclass <> ''
+                    GROUP BY dataclass
+                );";
+        $result = $this->connection->query($query);
+        if ($result->num_rows > 0) {
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+                                // var_dump($data); die();
+            }
+            return $data;
+        }else{
+            echo "No found records";
+        }
+    }
+
+
+        // addModel function that finds unique architect WCS's
+        public function displayArchitectWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'arch(%'
+                    AND architect IS NOT NULL AND architect <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'arch(%'
+                        AND architect IS NOT NULL AND architect <> ''
+                        GROUP BY architect
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+    
+
+
+        // addModel function that finds unique authprotocols WCS's
+        public function displayAuthprotWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'authprot(%'
+                    AND authprot IS NOT NULL AND authprot <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'authprot(%'
+                        AND authprot IS NOT NULL AND authprot <> ''
+                        GROUP BY authprot
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+    
+
+        // addModel function that finds unique netloc WCS's
+        public function displayNetlocWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'netloc(%'
+                    AND netloc IS NOT NULL AND netloc <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'netloc(%'
+                        AND netloc IS NOT NULL AND netloc <> ''
+                        GROUP BY netloc
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+
+
+
+        // addModel function that finds unique Authfact WCS's
+        public function displayAuthfactWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'authfact(%'
+                    AND authfact IS NOT NULL AND authfact <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'authfact(%'
+                        AND authfact IS NOT NULL AND authfact <> ''
+                        GROUP BY authfact
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+
+
+        // addModel function that finds unique Sign WCS's
+        public function displaySignWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'sign(%'
+                    AND sign IS NOT NULL AND sign <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'sign(%'
+                        AND sign IS NOT NULL AND sign <> ''
+                        GROUP BY sign
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+
+
+        // addModel function that finds unique ENC WCS's
+        public function displayEncWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'enc(%'
+                    AND enc IS NOT NULL AND enc <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'enc(%'
+                        AND enc IS NOT NULL AND enc <> ''
+                        GROUP BY enc
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+
+
+
+        // addModel function that finds unique UserPriv WCS's
+        public function displayUserprivWcsa()
+        {
+            $query = "SELECT * FROM wcsa WHERE wcsa_name LIKE 'userpriv(%'
+                    AND userpriv IS NOT NULL AND userpriv <> ''
+                    AND id IN (
+                        SELECT MIN(id)
+                        FROM wcsa
+                        WHERE wcsa_name LIKE 'userpriv(%'
+                        AND userpriv IS NOT NULL AND userpriv <> ''
+                        GROUP BY userpriv
+                    );";
+            $result = $this->connection->query($query);
+            if ($result->num_rows > 0) {
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                                    // var_dump($data); die();
+                }
+                return $data;
+            }else{
+                echo "No found records";
+            }
+        }
+
 
     public function insertDataWcsas($post)
     {
