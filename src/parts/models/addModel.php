@@ -348,7 +348,7 @@ On this page you can select aspects and by pressing the Calculate button the app
                         $modelColour = $modelFunctions->getRiskColour($item['risklevel']);
                         ?>
                         <tr>
-                            <!-- <td><?php echo $item['model_name'] ?></td> -->
+                            <td><?php echo $item['model_name'] ?></td>
                             <td><?php echo $item['type'] ?></td>
                             <td><?php echo $item['min_sl'] ?></td>
                             <td><?php echo $item['min_m'] ?></td>
